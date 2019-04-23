@@ -29,13 +29,5 @@ public class ControllerLogin {
             helper.aviso("Usuario incorreto");
         }
     }
-
-    public void placeHolderUsuario() {
-        helper.placeHolderUsuario();
-    }
-    
-    public void placeHolderSenha() {
-        helper.placeHolderSenha();
-    }
     
 }
