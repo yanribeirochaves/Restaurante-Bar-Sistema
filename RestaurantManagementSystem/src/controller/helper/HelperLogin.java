@@ -21,18 +21,6 @@ public class HelperLogin {
         Usuario usuario = new Usuario(nomeUsuario, senha);
         return usuario;
     }
-    
-    public void placeHolderUsuario(){
-        if(view.getTxtUsuario().equals("User")){
-            view.setTxtUsuario("");
-        }
-    }    
-    
-    public void placeHolderSenha(){
-        if(view.getTxtUsuario().equals("senha")){
-            view.setTxtSenha("");
-        }
-    }
 
     public void aviso(String aviso) {
         JOptionPane.showMessageDialog(null, aviso);
