@@ -42,7 +42,7 @@ public class ConnectionDB {
     }
 
     //Método que retorna o status da sua conexão//
-    public static String statusConection() {
+    public static String statusConnection() {
         return status;
     }
 
@@ -59,7 +59,6 @@ public class ConnectionDB {
 
     //Método que reinicia sua conexão//
     public static java.sql.Connection ReiniciarConexao() {
-
         FecharConexao();
         return ConnectionDB.getConexaoMySQL();
     }

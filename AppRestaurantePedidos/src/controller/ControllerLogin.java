@@ -6,6 +6,7 @@ import javax.swing.JOptionPane;
 import model.Usuario;
 import model.dao.UsuarioDAO;
 import view.Login;
+import view.MenuGarcom;
 
 /**
  * @author yanri
@@ -19,23 +20,32 @@ public class ControllerLogin {
         this.view = view;
     }
 
-    public void loginUsuario() {
-        
-        UsuarioDAO usuarioD = new UsuarioDAO();
+    public void autenticacaoUsuario() {
         try {
-            Usuario usuario = usuarioD.authentication(view.getTxtUser(), view.getTxtSenha());
-            //consultar o banco de dados para saber qual id representa cada nivel de acesso
-            if (usuario.getIdNivelAcesso() == 1) {
-                JOptionPane.showMessageDialog(null, "Garçom logado abrir tela do garçom");
-            } else if (usuario.getIdNivelAcesso()== 2) {
-                JOptionPane.showMessageDialog(null, "Gerente logado abrir tela do gerente");
-            } else if (usuario.getIdNivelAcesso() == 3) {
-                JOptionPane.showMessageDialog(null, "Cliente logado abrir tela do cliente");
-            } else {
-                JOptionPane.showMessageDialog(null, "Usuário e/ou senha incorretos. ");
+            //busca o usuario no banco com o username e senha dos campos de texto da tela
+            Usuario usuario = UsuarioDAO.buscaUsuario(view.getTxtUser(), view.getTxtSenha());
+            //obs: consulte o banco de dados para saber qual id representa cada nivel de acesso
+            //Chamada da interface pra cada tipo de usuario
+            switch (usuario.getIdNivelAcesso()) {
+                case 1:
+                    MenuGarcom menuGarcom = new MenuGarcom();
+                    menuGarcom.setVisible(true);
+                    view.dispose();
+                    break;
+                case 2:
+                    JOptionPane.showMessageDialog(null, "Gerente logado abrir tela do gerente");
+                    break;
+                case 3:
+                    JOptionPane.showMessageDialog(null, "Cliente logado abrir tela do cliente");
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Usuário e/ou senha incorretos.");
+                    break;
             }
-        } catch (NullPointerException e) {
-                JOptionPane.showMessageDialog(null, ConnectionDB.statusConection() + "\n\n" + e, "Erro", 0);
+        }
+        catch (NullPointerException e) {
+            //caso o usuario venha com valor null, algo de errado aconteceu na conexao com o banco
+            JOptionPane.showMessageDialog(null, ConnectionDB.statusConnection() + "\n\n" + e, "Erro", 0);
         }
     }
 }
