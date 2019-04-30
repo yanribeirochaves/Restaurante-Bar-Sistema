@@ -4,8 +4,12 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/yanri/Desktop/Projetos/Netbeans/AppRestaurantePedidos/src/model/dao/UsuarioDAO.java</file>
-            <file>file:/C:/Users/yanri/Desktop/Projetos/Netbeans/AppRestaurantePedidos/src/controller/ControllerLogin.java</file>
-            <file>file:/C:/Users/yanri/Desktop/Projetos/Netbeans/AppRestaurantePedidos/src/model/Usuario.java</file>
+            <file>file:/C:/Users/yanri/Desktop/Projetos/Netbeans/AppRestaurantePedidos/src/model/Produto.java</file>
+            <file>file:/C:/Users/yanri/Desktop/Projetos/Netbeans/AppRestaurantePedidos/src/controller/ControllerMenuGarcom.java</file>
+            <file>file:/C:/Users/yanri/Desktop/Projetos/Netbeans/AppRestaurantePedidos/src/model/dao/MesaDAO.java</file>
+            <file>file:/C:/Users/yanri/Desktop/Projetos/Netbeans/AppRestaurantePedidos/src/view/MenuGarcom.java</file>
+            <file>file:/C:/Users/yanri/Desktop/Projetos/Netbeans/AppRestaurantePedidos/src/model/Pedido.java</file>
+            <file>file:/C:/Users/yanri/Desktop/Projetos/Netbeans/AppRestaurantePedidos/src/controller/helper/HelperMenuGarcom.java</file>
         </group>
     </open-files>
 </project-private>
