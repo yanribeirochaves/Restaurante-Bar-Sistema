@@ -1,12 +1,12 @@
 package controller;
 
-import connection.ConnectionDB;
+import connection.ConnectionFactory;
 import java.sql.Connection;
 import javax.swing.JOptionPane;
-import model.Usuario;
-import model.dao.UsuarioDAO;
+import model.User;
+import model.dao.UserDAO;
 import view.Login;
-import view.MenuGarcom;
+import view.WaiterMenu;
 
 /**
  * @author yanri
@@ -20,15 +20,15 @@ public class ControllerLogin {
         this.view = view;
     }
 
-    public void autenticacaoUsuario() {
+    public void userAuthentication() {
         try {
             //busca o usuario no banco com o username e senha dos campos de texto da tela
-            Usuario usuario = UsuarioDAO.buscaUsuario(view.getTxtUser(), view.getTxtSenha());
+            User usuario = UserDAO.readAuthenticatedUser(view.getTxtUser(), view.getTxtKey());
             //obs: consulte o banco de dados para saber qual id representa cada nivel de acesso
             //Chamada da interface pra cada tipo de usuario
-            switch (usuario.getIdNivelAcesso()) {
+            switch (usuario.getIdAccesLevel()) {
                 case 1:
-                    MenuGarcom menuGarcom = new MenuGarcom();
+                    WaiterMenu menuGarcom = new WaiterMenu();
                     menuGarcom.setVisible(true);
                     view.dispose();
                     break;
@@ -45,7 +45,7 @@ public class ControllerLogin {
         }
         catch (NullPointerException e) {
             //caso o usuario venha com valor null, algo de errado aconteceu na conexao com o banco
-            JOptionPane.showMessageDialog(null, ConnectionDB.statusConnection() + "\n\n" + e, "Erro", 0);
+            JOptionPane.showMessageDialog(null, ConnectionFactory.statusConnection() + "\n\n" + e, "Erro", 0);
         }
     }
 }

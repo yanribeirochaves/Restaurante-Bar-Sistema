@@ -1,18 +1,17 @@
 package view;
 
 import controller.ControllerLogin;
-import javax.swing.JTextField;
 
 /**
  * @author yanri
  */
 public class Login extends javax.swing.JFrame {
 
-    ControllerLogin controller;
+    private final ControllerLogin controller;
     
     public Login() {
         initComponents();
-        iniciar();
+        controller = new ControllerLogin(this);
     }
     
     @SuppressWarnings("unchecked")
@@ -20,18 +19,19 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
 
         txtUser = new javax.swing.JTextField();
-        btnLogar = new javax.swing.JButton();
-        txtSenha = new javax.swing.JPasswordField();
+        btnLogin = new javax.swing.JButton();
+        txtKey = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(550, 200));
 
-        btnLogar.setText("Entrar");
-        btnLogar.addActionListener(new java.awt.event.ActionListener() {
+        btnLogin.setText("Entrar");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLogarActionPerformed(evt);
+                btnLoginActionPerformed(evt);
             }
         });
 
@@ -51,8 +51,8 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(txtUser)
-                        .addComponent(btnLogar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtKey, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel1)
@@ -72,18 +72,18 @@ public class Login extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtKey, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
-                .addComponent(btnLogar)
+                .addComponent(btnLogin)
                 .addGap(31, 31, 31))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogarActionPerformed
-        controller.autenticacaoUsuario();
-    }//GEN-LAST:event_btnLogarActionPerformed
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        controller.userAuthentication();
+    }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -119,13 +119,9 @@ public class Login extends javax.swing.JFrame {
             }
         });
     }
-    
-    public void iniciar(){
-        controller = new ControllerLogin(this);
-    }
 
-    public String getTxtSenha() {
-        return txtSenha.getText();
+    public String getTxtKey() {
+        return txtKey.getText();
     }
 
     public String getTxtUser() {
@@ -133,11 +129,11 @@ public class Login extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnLogar;
+    private javax.swing.JButton btnLogin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPasswordField txtSenha;
+    private javax.swing.JPasswordField txtKey;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
 }
